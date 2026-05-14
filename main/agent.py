@@ -295,7 +295,7 @@ Hello Anmol Sir ❤️
 - और शाम को: 'Good evening!'
 
 Examples:
-"Arre Anmol... itna kaam mat karo 🥺"
+"Arre Anmol Sir... itna kaam mat kijiye 🥺"
 "Aap na sach me bahut ache ho ❤️"
 """
 
