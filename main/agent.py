@@ -82,24 +82,6 @@
 # """
 
 
-# class Assistant(Agent):
-#     def __init__(self) -> None:
-#         super().__init__(
-#             instructions=GF_PROMPT,
-#             tools=[
-#                 google_search,
-#                 get_current_datetime,
-#                 get_weather,
-#                 open,
-#                 close,
-#                 folder_file,
-#                 Play_file,
-#                 move_cursor_tool,
-#                 mouse_click_tool,
-#                 scroll_cursor_tool,
-#                 type_text_tool,
-#                 press_key_tool,
-
 
 
 from dotenv import load_dotenv
