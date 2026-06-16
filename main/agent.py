@@ -99,19 +99,7 @@
 #                 scroll_cursor_tool,
 #                 type_text_tool,
 #                 press_key_tool,
-#                 press_hotkey_tool,
-#                 control_volume_tool,
-#                 swipe_gesture_tool,
-#             ],
-#         )
 
-
-# async def entrypoint(ctx: agents.JobContext):
-#     session = AgentSession(
-#         llm=google.beta.realtime.RealtimeModel(
-#             voice="Aoede"  # 💖 Best Female Voice
-#         )
-#     
 
 
 from dotenv import load_dotenv
