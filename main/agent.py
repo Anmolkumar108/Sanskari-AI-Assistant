@@ -122,20 +122,6 @@
 #         ),
 #     )
 
-#     await ctx.connect()
-
-#     await session.generate_reply(
-#         instructions=GF_PROMPT
-#     )
-
-
-# if __name__ == "__main__":
-#     agents.cli.run_app(
-#         agents.WorkerOptions(entrypoint_fnc=entrypoint)
-#     )
-
-
-
 
 
 from dotenv import load_dotenv
