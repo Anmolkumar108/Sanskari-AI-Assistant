@@ -111,17 +111,7 @@
 #         llm=google.beta.realtime.RealtimeModel(
 #             voice="Aoede"  # 💖 Best Female Voice
 #         )
-#     )
-
-#     await session.start(
-#         room=ctx.room,
-#         agent=Assistant(),
-#         room_input_options=RoomInputOptions(
-#             noise_cancellation=noise_cancellation.BVC(),
-#             video_enabled=True,
-#         ),
-#     )
-
+#     
 
 
 from dotenv import load_dotenv
