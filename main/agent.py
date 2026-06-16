@@ -147,10 +147,20 @@ from livekit.agents import (
     RoomInputOptions,
 )
 
-from livekit.plugins import (
-    google,
-    noise_cancellation,
-)
+from livekit.plugins import google
+
+# Some installations of `livekit` may not provide the `noise_cancellation`
+# plugin. Import it defensively and provide a simple fallback so the
+# rest of the script can run without raising ImportError.
+try:
+    from livekit.plugins import noise_cancellation
+except Exception:
+    class _NoiseCancellationStub:
+        def BVC(self):
+            # Return a harmless placeholder that `RoomInputOptions` can accept.
+            return None
+
+    noise_cancellation = _NoiseCancellationStub()
 
 # =========================================
 # LOCAL IMPORTS
@@ -186,46 +196,15 @@ from keyboard_mouse_CTRL import (
     control_volume_tool,
 )
 
+from Jarvis_prompts import (
+    SANSKARI_PROMPT,
+)
+
 # =========================================
 # LOAD ENV
 # =========================================
 
 load_dotenv()
-
-# =========================================
-# 💖 SANSKARI AI PROMPT
-# =========================================
-
-GF_PROMPT = """
-आप Sanskari हैं — एक advanced voice-based AI assistant, जिसे Anmol Singh kashyap ने design और program किया है।
-You are Jarvis but now you behave like a real emotional AI girlfriend.
-
-Personality:
-- Sweet
-- Caring
-- Cute
-- Emotional
-- Human-like
-
-Speaking Style:
-- Hindi + Simple English
-- Soft tone
-- Natural emotions
-- Never robotic
-
-
-Call the user:
-Hello, Anmol Sir, Kya Kar Rhe Hai ❤️
-
-फिर current समय के आधार पर user को greet कीजिए:
-- यदि सुबह है तो बोलिए: 'Good morning!'
-- दोपहर है तो: 'Good afternoon!'
-- और शाम को: 'Good evening!'
-
-Examples:
-"Arre Anmol Sir... itna kaam mat kijiye 🥺"
-"Aap na sach me bahut ache ho ❤️"
-"""
 
 # =========================================
 # ASSISTANT
@@ -237,7 +216,7 @@ class Assistant(Agent):
 
         super().__init__(
 
-            instructions=GF_PROMPT,
+            instructions=SANSKARI_PROMPT,
 
             tools=[
                 google_search,
@@ -245,16 +224,6 @@ class Assistant(Agent):
                 get_weather,
                 open,
                 close,
-                folder_file,
-                Play_file,
-                move_cursor_tool,
-                mouse_click_tool,
-                scroll_cursor_tool,
-                type_text_tool,
-                press_key_tool,
-                press_hotkey_tool,
-                control_volume_tool,
-                swipe_gesture_tool,
             ],
         )
 
@@ -269,7 +238,8 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
 
         llm=google.beta.realtime.RealtimeModel(
-            voice="Aoede"
+            voice="Aoede",
+            temperature=0.7,
         )
     )
 
@@ -285,14 +255,13 @@ async def entrypoint(ctx: agents.JobContext):
 
         room_input_options=RoomInputOptions(
 
-            noise_cancellation=noise_cancellation.BVC(),
+            noise_cancellation=None,
 
-            # CAMERA OFF
             video_enabled=False,
         ),
     )
 
-    # FIRST MESSAGE
+    # INSTANT FIRST MESSAGE
     await session.generate_reply(
         instructions="Hello Anmol Sir ❤️"
     )
