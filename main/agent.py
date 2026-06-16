@@ -1,10 +1,3 @@
-# from dotenv import load_dotenv
-# import json
-# import os
-
-# from livekit import agents
-# from livekit.agents import AgentSession, Agent, RoomInputOptions
-# from livekit.plugins import google, noise_cancellation
 
 
 
