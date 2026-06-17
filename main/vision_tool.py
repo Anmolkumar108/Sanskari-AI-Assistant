@@ -30,4 +30,16 @@ async def analyze_screen() -> str:
                 shot.rgb
             )
 
-        
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=[
+                """
+                Screen ko analyze karo.
+
+                Batao:
+                1. User kya kar raha hai
+                2. Kaunsi application open hai
+                3. Koi error hai ya nahi
+                4. Next step kya hona chahiye
+
+                
