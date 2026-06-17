@@ -18,4 +18,16 @@ async def analyze_screen() -> str:
             api_key=api_key
         )
 
+        with mss() as sct:
+
+            monitor = sct.monitors[1]
+
+            shot = sct.grab(monitor)
+
+            img = Image.frombytes(
+                "RGB",
+                shot.size,
+                shot.rgb
+            )
+
         
