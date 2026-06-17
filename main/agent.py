@@ -79,7 +79,10 @@ class Assistant(Agent):
 
             instructions=SANSKARI_PROMPT,
 
-            
+            tools=[
+    google_search,
+    get_current_datetime,
+    
         )
 
 # =========================================
