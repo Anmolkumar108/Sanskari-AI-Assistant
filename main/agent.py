@@ -82,7 +82,11 @@ class Assistant(Agent):
             tools=[
     google_search,
     get_current_datetime,
-    
+    get_weather,
+    open,
+    close,
+    analyze_screen,
+],
         )
 
 # =========================================
