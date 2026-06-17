@@ -42,4 +42,10 @@ async def analyze_screen() -> str:
                 3. Koi error hai ya nahi
                 4. Next step kya hona chahiye
 
-                
+                Hindi me jawab do.
+                """,
+                img,
+            ],
+        )
+
+       
