@@ -48,4 +48,8 @@ async def analyze_screen() -> str:
             ],
         )
 
-       
+        return response.text
+
+    except Exception as e:
+
+        
