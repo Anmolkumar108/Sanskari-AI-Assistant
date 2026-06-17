@@ -52,4 +52,4 @@ async def analyze_screen() -> str:
 
     except Exception as e:
 
-        
+        return f"Vision Error: {str(e)}"
