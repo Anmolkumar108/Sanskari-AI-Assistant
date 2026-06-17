@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 
 from livekit import agents
+from vision_tool import analyze_screen
 from livekit.agents import (
     AgentSession,
     Agent,
@@ -78,13 +79,7 @@ class Assistant(Agent):
 
             instructions=SANSKARI_PROMPT,
 
-            tools=[
-                google_search,
-                get_current_datetime,
-                get_weather,
-                open,
-                close,
-            ],
+            
         )
 
 # =========================================
