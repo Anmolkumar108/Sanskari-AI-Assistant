@@ -89,27 +89,7 @@ class Assistant(Agent):
     open,
     close,
 
-    # File & Folder Control
-    folder_file,
-    Play_file,
-
-    # Vision
-    analyze_screen,
-
-    # Mouse
-    move_cursor_tool,
-    mouse_click_tool,
-    scroll_cursor_tool,
-    swipe_gesture_tool,
-
-    # Keyboard
-    type_text_tool,
-    press_key_tool,
-    press_hotkey_tool,
-
-    # System
-    control_volume_tool,
-],
+    
         )
 
 # =========================================
