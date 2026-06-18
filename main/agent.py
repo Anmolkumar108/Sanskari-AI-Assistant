@@ -102,6 +102,11 @@ class Assistant(Agent):
     scroll_cursor_tool,
     swipe_gesture_tool,
 
+    # Keyboard
+    type_text_tool,
+    press_key_tool,
+    press_hotkey_tool,
+
     
         )
 
