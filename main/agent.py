@@ -80,12 +80,35 @@ class Assistant(Agent):
             instructions=SANSKARI_PROMPT,
 
             tools=[
+    # Search
     google_search,
     get_current_datetime,
     get_weather,
+
+    # Window / App Control
     open,
     close,
+
+    # File & Folder Control
+    folder_file,
+    Play_file,
+
+    # Vision
     analyze_screen,
+
+    # Mouse
+    move_cursor_tool,
+    mouse_click_tool,
+    scroll_cursor_tool,
+    swipe_gesture_tool,
+
+    # Keyboard
+    type_text_tool,
+    press_key_tool,
+    press_hotkey_tool,
+
+    # System
+    control_volume_tool,
 ],
         )
 
