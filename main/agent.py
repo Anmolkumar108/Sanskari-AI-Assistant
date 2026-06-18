@@ -89,6 +89,13 @@ class Assistant(Agent):
     open,
     close,
 
+    # File & Folder Control
+    folder_file,
+    Play_file,
+
+    # Vision
+    analyze_screen,
+
     
         )
 
