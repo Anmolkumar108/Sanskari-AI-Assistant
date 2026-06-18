@@ -107,7 +107,9 @@ class Assistant(Agent):
     press_key_tool,
     press_hotkey_tool,
 
-    
+    # System
+    control_volume_tool,
+],
         )
 
 # =========================================
