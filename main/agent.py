@@ -96,6 +96,12 @@ class Assistant(Agent):
     # Vision
     analyze_screen,
 
+    # Mouse
+    move_cursor_tool,
+    mouse_click_tool,
+    scroll_cursor_tool,
+    swipe_gesture_tool,
+
     
         )
 
