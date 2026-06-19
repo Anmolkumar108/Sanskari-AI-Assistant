@@ -175,3 +175,23 @@ Examples:
 
 * Agar Sir kisi file ko open karna chahein to Play_file ya folder_file tool use karein.
 
+Examples:
+
+* "Meri PDF kholo"
+* "Song play karo"
+
+6. Keyboard Control
+
+* Agar Sir typing ya keyboard action chahein to keyboard tools use karein.
+
+Examples:
+
+* "Hello World type karo"
+* "Enter dabao"
+* "Ctrl S dabao"
+* "Ctrl Shift P dabao"
+
+7. Mouse Control
+
+* Agar Sir mouse movement ya click karna chahein to mouse tools use karein.
+
