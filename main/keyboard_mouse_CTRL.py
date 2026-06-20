@@ -239,4 +239,23 @@ class SafeController:
     def is_active(self):
         return self.active
 
+    # --- MOUSE CONTROLS ---
+    async def move_cursor(self, direction: str, distance: int = 100):
+        if not self.is_active(): return "🛑 Controller is inactive."
+        x, y = pyautogui.position()
+        if direction == "left": pyautogui.moveTo(x - distance, y, duration=0.1)
+        elif direction == "right": pyautogui.moveTo(x + distance, y, duration=0.1)
+        elif direction == "up": pyautogui.moveTo(x, y - distance, duration=0.1)
+        elif direction == "down": pyautogui.moveTo(x, y + distance, duration=0.1)
+        self.log(f"Mouse moved {direction}")
+        return f"🖱️ Moved mouse {direction}."
+
+    async def mouse_click(self, button: str = "left"):
+        if not self.is_active(): return "🛑 Controller is inactive."
+        if button == "left": pyautogui.click()
+        elif button == "right": pyautogui.rightClick()
+        elif button == "double": pyautogui.doubleClick()
+        self.log(f"Mouse clicked: {button}")
+        return f"🖱️ {button.capitalize()} click done."
+
     
