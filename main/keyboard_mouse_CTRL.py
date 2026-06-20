@@ -378,3 +378,13 @@ async def mouse_click_tool(button: str = "left"):
     """Clicks mouse (left, right, double)."""
     return await with_temporary_activation(controller.mouse_click, button)
 
+@function_tool
+async def scroll_cursor_tool(direction: str, amount: int = 10):
+    """Scrolls the screen up or down."""
+    return await with_temporary_activation(controller.scroll_cursor, direction, amount)
+
+@function_tool
+async def type_text_tool(text: str):
+    """Types standard sentences or texts strings sequentially."""
+    return await with_temporary_activation(controller.type_text, text)
+
