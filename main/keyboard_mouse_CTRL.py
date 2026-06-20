@@ -313,4 +313,39 @@ class SafeController:
                 return f"❌ Shortcut me '{k}' key invalid hai."
             cleaned_keys.append(k_clean)
             
-       
+        pyautogui.hotkey(*cleaned_keys)
+        self.log(f"Pressed hotkey: {' + '.join(cleaned_keys)}")
+        return f"⌨️ Hotkey {' + '.join(cleaned_keys)} executed."
+
+    async def hold_and_press(self, hold_key: str, press_key: str, times: int = 1):
+        """Ek key ko daba kar doosri key ko baar baar press karna (e.g., Alt hold karke Tab dabana navigation ke liye)"""
+        if not self.is_active(): return "🛑 Controller is inactive."
+        
+        h_key = hold_key.lower().strip()
+        p_key = press_key.lower().strip()
+        
+        with pyautogui.hold(h_key):
+            for _ in range(times):
+                pyautogui.press(p_key)
+                await asyncio.sleep(0.1)
+                
+        return f"⌨️ Held '{hold_key}' and pressed '{press_key}' {times} times."
+
+    # --- ADVANCED OS CONTROLS ---
+    async def control_volume(self, action: str):
+        if not self.is_active(): return "🛑 Controller is inactive."
+        if action == "up": pyautogui.press("volumeup")
+        elif action == "down": pyautogui.press("volumedown")
+        elif action == "mute": pyautogui.press("volumemute")
+        return f"🔊 Volume {action}."
+
+    async def swipe_gesture(self, direction: str):
+        if not self.is_active(): return "🛑 Controller is inactive."
+        w, h = pyautogui.size()
+        x, y = w // 2, h // 2
+        if direction == "up": pyautogui.moveTo(x, y + 200); pyautogui.dragTo(x, y - 200, duration=0.3)
+        elif direction == "down": pyautogui.moveTo(x, y - 200); pyautogui.dragTo(x, y + 200, duration=0.3)
+        elif direction == "left": pyautogui.moveTo(x + 200, y); pyautogui.dragTo(x - 200, y, duration=0.3)
+        elif direction == "right": pyautogui.moveTo(x - 200, y); pyautogui.dragTo(x + 200, y, duration=0.3)
+        return f"🖱️ Swipe {direction} done."
+
