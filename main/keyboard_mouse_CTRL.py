@@ -349,3 +349,22 @@ class SafeController:
         elif direction == "right": pyautogui.moveTo(x - 200, y); pyautogui.dragTo(x + 200, y, duration=0.3)
         return f"🖱️ Swipe {direction} done."
 
+# ------------------------------
+# LiveKit Tool Wrappers Section
+# ------------------------------
+
+controller = SafeController()
+
+async def with_temporary_activation(fn, *args, **kwargs):
+    print(f"🔍 EXECUTION: {fn.__name__} | args: {args}")
+    controller.activate("my_secret_token")
+    
+    # OS level par command register hone ke liye 100ms ka delay
+    await asyncio.sleep(0.1) 
+    result = await fn(*args, **kwargs)
+    
+    # Action complete hone ke baad deactivation se pehle buffer time
+    await asyncio.sleep(0.5)
+    controller.deactivate()
+    return result
+
