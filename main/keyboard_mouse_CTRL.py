@@ -283,4 +283,34 @@ class SafeController:
         self.log(f"Typed text: {text}")
         return f"⌨️ Typed: {text}"
 
-    
+    async def press_key(self, key: str):
+        """Single key press karne ke liye (e.g., 'enter', 'tab', 'space', 'backspace', 'f5')"""
+        if not self.is_active(): return "🛑 Controller is inactive."
+        
+        k_lower = key.lower().strip()
+        # standardizing names for LLM
+        if k_lower in ["win", "cmd", "command"]: k_lower = "win"
+        elif k_lower in ["ctrl", "control"]: k_lower = "ctrl"
+        
+        if k_lower not in self.valid_pyautogui_keys:
+            return f"❌ Key '{key}' system support nahi karta."
+            
+        pyautogui.press(k_lower)
+        self.log(f"Pressed key: {k_lower}")
+        return f"⌨️ Key '{k_lower}' pressed successfully."
+
+    async def press_hotkey(self, keys: List[str]):
+        """Saare VIP shortcuts chalane ke liye (e.g., ['ctrl', 'c'], ['alt', 'tab'], ['win', 'r'])"""
+        if not self.is_active(): return "🛑 Controller is inactive."
+        
+        cleaned_keys = []
+        for k in keys:
+            k_clean = k.lower().strip()
+            if k_clean in ["win", "cmd", "command"]: k_clean = "win"
+            elif k_clean in ["ctrl", "control"]: k_clean = "ctrl"
+            
+            if k_clean not in self.valid_pyautogui_keys:
+                return f"❌ Shortcut me '{k}' key invalid hai."
+            cleaned_keys.append(k_clean)
+            
+       
