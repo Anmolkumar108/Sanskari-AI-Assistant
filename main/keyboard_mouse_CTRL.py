@@ -403,3 +403,8 @@ async def hold_and_press_tool(hold_key: str, press_key: str, times: int = 1):
     """Holds down one key (like 'alt') and presses another key multiple times (like 'tab') to navigate menus."""
     return await with_temporary_activation(controller.hold_and_press, hold_key, press_key, times)
 
+@function_tool
+async def control_volume_tool(action: str):
+    """Controls system audio (up, down, mute)."""
+    return await with_temporary_activation(controller.control_volume, action)
+
