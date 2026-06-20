@@ -208,3 +208,35 @@ from livekit.agents import function_tool
 pyautogui.FAILSAFE = True
 pyautogui.PAUSE = 0.05  # Har command ke beech halka sa delay taaki system freeze na ho
 
+# ---------------------
+# SafeController Class
+# ---------------------
+class SafeController:
+    def __init__(self):
+        self.active = False
+        self.activation_time = None
+        
+        # PyAutoGUI standard keys mappings for validation
+        self.valid_pyautogui_keys = set(pyautogui.KEYBOARD_KEYS)
+
+    def log(self, action: str):
+        # 🌟 UnicodeEncodeError Fix: utf-8 encoding lagayi hai taaki Hindi/Special characters safely log ho sakein
+        with open("control_log.txt", "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now()}: {action}\n")
+
+    def activate(self, token=None):
+        if token != "my_secret_token":
+            self.log("Activation attempt failed.")
+            return
+        self.active = True
+        self.activation_time = time.time()
+        self.log("Controller auto-activated.")
+
+    def deactivate(self):
+        self.active = False
+        self.log("Controller auto-deactivated.")
+
+    def is_active(self):
+        return self.active
+
+    
