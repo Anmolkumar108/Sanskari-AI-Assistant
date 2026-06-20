@@ -398,3 +398,8 @@ async def press_hotkey_tool(keys: List[str]):
     """Executes key combinations/shortcuts like ['ctrl', 'alt', 'delete'] or ['win', 'r'] or ['ctrl', 't']."""
     return await with_temporary_activation(controller.press_hotkey, keys)
 
+@function_tool
+async def hold_and_press_tool(hold_key: str, press_key: str, times: int = 1):
+    """Holds down one key (like 'alt') and presses another key multiple times (like 'tab') to navigate menus."""
+    return await with_temporary_activation(controller.hold_and_press, hold_key, press_key, times)
+
