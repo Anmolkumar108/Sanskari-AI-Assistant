@@ -408,3 +408,7 @@ async def control_volume_tool(action: str):
     """Controls system audio (up, down, mute)."""
     return await with_temporary_activation(controller.control_volume, action)
 
+@function_tool
+async def swipe_gesture_tool(direction: str):
+    """Performs a drag/swipe gesture on screen."""
+    return await with_temporary_activation(controller.swipe_gesture, direction)
