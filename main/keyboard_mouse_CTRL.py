@@ -258,4 +258,29 @@ class SafeController:
         self.log(f"Mouse clicked: {button}")
         return f"🖱️ {button.capitalize()} click done."
 
+    async def scroll_cursor(self, direction: str, amount: int = 10):
+        if not self.is_active(): return "🛑 Controller is inactive."
+        clicks = amount * 100
+        if direction == "up": pyautogui.scroll(clicks)
+        elif direction == "down": pyautogui.scroll(-clicks)
+        self.log(f"Mouse scrolled {direction}")
+        return f"🖱️ Scrolled {direction}"
+
+    # --- FULL KEYBOARD CONTROLS ---
+    async def type_text(self, text: str):
+        """Pure text document ya search bar me likhne ke liye"""
+        if not self.is_active(): return "🛑 Controller is inactive."
+        
+        # 🌟 Hindi text validation: Copy-Paste logic se Hindi text OS templates par perfect chalta hai
+        try:
+            import pyperclip
+            pyperclip.copy(text)
+            pyautogui.hotkey("ctrl", "v")
+        except Exception:
+            # Clipboard fail hone par standard typing manual execution
+            pyautogui.write(text, interval=0.01)
+            
+        self.log(f"Typed text: {text}")
+        return f"⌨️ Typed: {text}"
+
     
