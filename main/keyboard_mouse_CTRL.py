@@ -368,3 +368,13 @@ async def with_temporary_activation(fn, *args, **kwargs):
     controller.deactivate()
     return result
 
+@function_tool
+async def move_cursor_tool(direction: str, distance: int = 100):
+    """Moves the mouse cursor (left, right, up, down)."""
+    return await with_temporary_activation(controller.move_cursor, direction, distance)
+
+@function_tool
+async def mouse_click_tool(button: str = "left"):
+    """Clicks mouse (left, right, double)."""
+    return await with_temporary_activation(controller.mouse_click, button)
+
