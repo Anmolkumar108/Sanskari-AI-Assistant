@@ -83,4 +83,10 @@ async def get_weather(city: str = "") -> str:
         humidity = data["main"]["humidity"]
         wind_speed = data["wind"]["speed"]
 
+        result = (f"Weather in {city}:\n"
+                  f"- Condition: {weather}\n"
+                  f"- Temperature: {temperature}°C\n"
+                  f"- Humidity: {humidity}%\n"
+                  f"- Wind Speed: {wind_speed} m/s")
+
         
