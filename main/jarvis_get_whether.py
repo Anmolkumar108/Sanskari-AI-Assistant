@@ -44,3 +44,13 @@ def detect_city_by_ip() -> str:
         logger.error(f"IP se city detect karne me error aya: {e}")
         return "Delhi"
 
+@function_tool
+async def get_weather(city: str = "") -> str:
+    """
+    Fetches the current weather. 
+    If a city name is given, it fetches weather for that city.
+    If no city name is given, it automatically tracks your live location and shows the weather.
+    """
+    api_key = os.getenv("OPENWEATHER_API_KEY")
+
+    
