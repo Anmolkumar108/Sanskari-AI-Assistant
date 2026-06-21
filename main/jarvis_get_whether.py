@@ -71,4 +71,10 @@ async def get_weather(city: str = "") -> str:
         "units": "metric"
     }
 
-    
+    try:
+        response = requests.get(url, params=params)
+        if response.status_code != 200:
+            logger.error(f"OpenWeather API mein error aaya: {response.status_code} - {response.text}")
+            return f"Error: {city} के लिए weather fetch नहीं कर पाए। कृपया city name चेक करें।"
+
+       
