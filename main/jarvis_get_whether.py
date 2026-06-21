@@ -77,4 +77,10 @@ async def get_weather(city: str = "") -> str:
             logger.error(f"OpenWeather API mein error aaya: {response.status_code} - {response.text}")
             return f"Error: {city} के लिए weather fetch नहीं कर पाए। कृपया city name चेक करें।"
 
-       
+        data = response.json()
+        weather = data["weather"][0]["description"].title()
+        temperature = data["main"]["temp"]
+        humidity = data["main"]["humidity"]
+        wind_speed = data["wind"]["speed"]
+
+        
