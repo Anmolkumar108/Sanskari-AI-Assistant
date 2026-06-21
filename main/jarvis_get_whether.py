@@ -53,4 +53,14 @@ async def get_weather(city: str = "") -> str:
     """
     api_key = os.getenv("OPENWEATHER_API_KEY")
 
+    if not api_key:
+        logger.error("OpenWeather API key missing hai.")
+        return "Environment variables mein OpenWeather API key नहीं मिली।"
+
+    # 🌟 MAGIC LOGIC: Agar tumne city ka naam nahi bataya, toh yeh live location track karega!
+    # Agar tum bologe "Mumbai ka weather batao", toh city="Mumbai" pass hoga aur yeh direct chalega.
+    if not city or city.strip() == "":
+        logger.info("🔍 User ne koi city nahi batayi. Live location fetch ki ja rahi hai...")
+        city = get_exact_live_location()
+
     
