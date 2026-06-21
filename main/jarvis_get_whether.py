@@ -24,4 +24,10 @@ def get_exact_live_location() -> str:
         else:
             logger.warning("⚠️ Live location fail hui, IP API ka use kiya ja raha hai.")
             return detect_city_by_ip()  # Backup agar geocoder fail ho jaye
+    except Exception as e:
+        logger.error(f"❌ Live location nikalne me error: {e}")
+        return detect_city_by_ip()
+
+def detect_city_by_ip() -> str:
+    """Backup IP-based city detection"""
     
