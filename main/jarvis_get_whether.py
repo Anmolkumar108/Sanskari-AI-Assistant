@@ -92,5 +92,9 @@ async def get_weather(city: str = "") -> str:
         logger.info(f"Weather result: \n{result}")
         return result
 
-    
+    except Exception as e:
+        logger.exception(f"Weather fetch karte samay exception aya: {e}")
+        return "Weather fetch karte samay ek error aaya"
+
+
 
