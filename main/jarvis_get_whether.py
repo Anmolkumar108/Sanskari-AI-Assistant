@@ -89,4 +89,8 @@ async def get_weather(city: str = "") -> str:
                   f"- Humidity: {humidity}%\n"
                   f"- Wind Speed: {wind_speed} m/s")
 
-        
+        logger.info(f"Weather result: \n{result}")
+        return result
+
+    
+
