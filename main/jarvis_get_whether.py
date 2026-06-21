@@ -30,4 +30,17 @@ def get_exact_live_location() -> str:
 
 def detect_city_by_ip() -> str:
     """Backup IP-based city detection"""
-    
+    try:
+        logger.info("🌐 IP ke zariye shahar detect kiya ja raha hai...")
+        ip_info = requests.get("https://ipapi.co/json/").json()
+        city = ip_info.get("city")
+        if city:
+            logger.info(f"IP se shahar mila: {city}")
+            return city
+        else:
+            logger.warning("City detect karne me viphal, default 'Delhi' istemal ho raha hai.")
+            return "Delhi"
+    except Exception as e:
+        logger.error(f"IP se city detect karne me error aya: {e}")
+        return "Delhi"
+
