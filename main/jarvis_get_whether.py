@@ -63,4 +63,12 @@ async def get_weather(city: str = "") -> str:
         logger.info("🔍 User ne koi city nahi batayi. Live location fetch ki ja rahi hai...")
         city = get_exact_live_location()
 
+    logger.info(f"🌤️ Weather fetch kiya ja raha hai is shahar ke liye: {city}")
+    url = "https://api.openweathermap.org/data/2.5/weather"
+    params = {
+        "q": city,
+        "appid": api_key,
+        "units": "metric"
+    }
+
     
