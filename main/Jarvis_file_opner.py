@@ -212,4 +212,13 @@ async def Play_file(name: str) -> str:
         "C:/Users/Anmol kumar/OneDrive/Documents"
     ]
     
+    # Run super fast custom search
+    loop = asyncio.get_event_loop()
+    best_item = await loop.run_in_executor(None, lambda: asyncio.run(fast_find_item(folders_to_search, name)))
     
+    if best_item:
+        try:
+            path = best_item["path"]
+            logger.info(f"📂 Match Mil Gaya! Opening: {path}")
+            
+            
