@@ -193,3 +193,14 @@ async def fast_find_item(base_dirs, target_name):
                 
     return matched_items[0]
 
+# ========================================================
+# MAIN FUNCTION TOOL FOR SANSKARI
+# ========================================================
+@function_tool
+async def Play_file(name: str) -> str:
+    """
+    User ke kehne par system se koi bhi file ya folder instantly open karta hai.
+    """
+    logger.info(f"🎙️ Sanskari ko target folder/file mila: '{name}'")
+    
+    
