@@ -135,4 +135,24 @@ sys.stdout.reconfigure(encoding='utf-8')
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# =====
+# ========================================================
+# SUPER FAST RECURSIVE SEARCH (Seemit depth ke sath)
+# ========================================================
+def clean_string(s: str) -> str:
+    """Spaces aur special characters hata kar string ko saaf karta hai"""
+    return "".join(c for c in s.lower() if c.isalnum())
+
+async def fast_find_item(base_dirs, target_name):
+    """Poori drive scan karne ke bajaye targeted folder search karega"""
+    target_clean = clean_string(target_name)
+    matched_items = []
+
+    for base_dir in base_dirs:
+        if not os.path.exists(base_dir):
+            continue
+        try:
+            # Sirf 2 ya 3 level andar tak check karega taaki network loop block na ho
+            for entry in os.scandir(base_dir):
+                entry_clean = clean_string(entry.name)
+                
+                
