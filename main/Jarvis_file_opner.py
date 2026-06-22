@@ -182,4 +182,14 @@ async def fast_find_item(base_dirs, target_name):
     if not matched_items:
         return None
 
+    # Sabse best matching item nikalne ke liye difflib check
+    choices = [item["name"] for item in matched_items]
+    best_matches = difflib.get_close_matches(target_name, choices, n=1, cutoff=0.0)
     
+    if best_matches:
+        for item in matched_items:
+            if item["name"] == best_matches[0]:
+                return item
+                
+    return matched_items[0]
+
