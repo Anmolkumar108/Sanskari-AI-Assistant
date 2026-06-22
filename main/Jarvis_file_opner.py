@@ -155,4 +155,12 @@ async def fast_find_item(base_dirs, target_name):
             for entry in os.scandir(base_dir):
                 entry_clean = clean_string(entry.name)
                 
+                # Agar user ka bola naam folder/file ke naam ke andar match hota hai
+                if target_clean in entry_clean or entry_clean in target_clean:
+                    matched_items.append({
+                        "name": entry.name,
+                        "path": entry.path,
+                        "is_dir": entry.is_dir()
+                    })
                 
+                # Agar folder hai 
