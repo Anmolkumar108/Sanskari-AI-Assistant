@@ -174,4 +174,12 @@ async def fast_find_item(base_dirs, target_name):
                                     "path": sub_entry.path,
                                     "is_dir": sub_entry.is_dir()
                                 })
-                    
+                    except Exception:
+                        continue
+        except Exception as e:
+            logger.error(f"Error scanning {base_dir}: {e}")
+            
+    if not matched_items:
+        return None
+
+    
