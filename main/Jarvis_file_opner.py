@@ -221,4 +221,14 @@ async def Play_file(name: str) -> str:
             path = best_item["path"]
             logger.info(f"📂 Match Mil Gaya! Opening: {path}")
             
+            if os.name == 'nt':
+                os.startfile(path)
+            else:
+                subprocess.call(['open' if sys.platform == 'darwin' else 'xdg-open', path])
+                
+            return f"✅ Anmol Sir, maine aapke liye '{best_item['name']}' folder/file open kar diya hai."
             
+        except Exception as e:
+            logger.error(f"❌ Open karne mein error: {e}")
+            return f"❌ Folder open karne mein dikkat aayi: {str(e)}"
+    
