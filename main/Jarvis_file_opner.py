@@ -231,4 +231,8 @@ async def Play_file(name: str) -> str:
         except Exception as e:
             logger.error(f"❌ Open karne mein error: {e}")
             return f"❌ Folder open karne mein dikkat aayi: {str(e)}"
-    
+    else:
+        # 🚀 EXTRA BACKUP JUGAAD: Agar drive scan mein nahi mila, toh windows search automation check karo
+        try:
+            logger.info("🔍 Fallback: Windows Explorer directly command execute kar raha hai...")
+            
