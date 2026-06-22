@@ -235,4 +235,7 @@ async def Play_file(name: str) -> str:
         # 🚀 EXTRA BACKUP JUGAAD: Agar drive scan mein nahi mila, toh windows search automation check karo
         try:
             logger.info("🔍 Fallback: Windows Explorer directly command execute kar raha hai...")
-            
+            if os.name == 'nt':
+                # Direct windows ko bolenge ki is naam ka folder kholo
+                os.system(f'start "" "D:/{name}"')
+                
