@@ -238,4 +238,8 @@ async def Play_file(name: str) -> str:
             if os.name == 'nt':
                 # Direct windows ko bolenge ki is naam ka folder kholo
                 os.system(f'start "" "D:/{name}"')
-                
+                return f"✅ Sir, maine Windows Explorer ke zariye '{name}' dhoondhne ki koshish ki hai."
+        except Exception:
+            pass
+            
+        
