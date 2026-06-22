@@ -163,4 +163,15 @@ async def fast_find_item(base_dirs, target_name):
                         "is_dir": entry.is_dir()
                     })
                 
-                # Agar folder hai 
+                # Agar folder hai toh uske 1 level aur andar check kar lo
+                if entry.is_dir() and not entry.name.startswith('.'):
+                    try:
+                        for sub_entry in os.scandir(entry.path):
+                            sub_clean = clean_string(sub_entry.name)
+                            if target_clean in sub_clean or sub_clean in target_clean:
+                                matched_items.append({
+                                    "name": sub_entry.name,
+                                    "path": sub_entry.path,
+                                    "is_dir": sub_entry.is_dir()
+                                })
+                    
