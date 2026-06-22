@@ -203,4 +203,13 @@ async def Play_file(name: str) -> str:
     """
     logger.info(f"🎙️ Sanskari ko target folder/file mila: '{name}'")
     
+    # 🌟 SABSE IMPORTANT: Apne main folder paths ko yahan target karo!
+    # Pure D:/ ko scan karne ke bajaye un main folders ka naam do jahan tumhare data hain.
+    # Isse search speed 100x tez ho jayegi aur match miss nahi hoga.
+    folders_to_search = [
+        "D:/", 
+        "C:/Users/Anmol kumar/OneDrive/Desktop",
+        "C:/Users/Anmol kumar/OneDrive/Documents"
+    ]
+    
     
