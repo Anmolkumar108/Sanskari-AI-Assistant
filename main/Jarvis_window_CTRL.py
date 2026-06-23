@@ -578,4 +578,20 @@ async def folder_file(command: str) -> str:
             except Exception:
                 return "Failed"
 
+    # 4️⃣ OPEN FOLDER / FILE TARGET RUNNER
+    clean_command = command.lower().replace("open", "").replace("folder", "").replace("file", "").strip()
+    if not clean_command:
+        return "Not Found"
+
+    target_path = windows_global_search(clean_command)
+
+    if target_path and os.path.exists(target_path):
+        try:
+            logger.info(f"🎯 Execution Path Found: {target_path}")
+            os.startfile(target_path)
+            return "Done"
+        except Exception as e:
+            logger.error(f"❌ Error launching path: {e}")
+            return "Failed"
+
     
