@@ -437,4 +437,22 @@ async def open(app_title: str) -> str:
         except Exception:
             pass
 
-    
+    # Fuzzy dynamic verification inside our explicit APP_MAPPINGS keys
+    for mapping_name, system_exe in APP_MAPPINGS.items():
+        if clean_query in clean_string(mapping_name) or clean_string(mapping_name) in clean_query:
+            try:
+                os.startfile(system_exe)
+                return "Done"
+            except Exception:
+                pass
+
+    # 2️⃣ Windows Registry Mapping Check (Chrome, WhatsApp, standard tools path tracking)
+    try:
+        registered_apps = get_registered_windows_apps()
+        target_exe_path = None
+        for app_name, path in registered_apps.items():
+            if clean_query in clean_string(app_name) or clean_string(app_name) in clean_query:
+                target_exe_path = path
+                break
+                
+       
