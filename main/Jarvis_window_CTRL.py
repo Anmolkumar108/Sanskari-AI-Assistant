@@ -455,4 +455,17 @@ async def open(app_title: str) -> str:
                 target_exe_path = path
                 break
                 
-       
+        if target_exe_path and os.path.exists(target_exe_path):
+            os.startfile(target_exe_path)
+            return "Done"
+    except Exception as e:
+        logger.error(f"Registry lookup error: {e}")
+
+    # 3️⃣ Safe Direct Subprocess Execution (Only runs if a single word to block command prompt popup bugs)
+    if " " not in app_query:
+        try:
+            process = subprocess.Popen(f'start "" "{app_query}"', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process.communicate()
+            if process.returncode == 0:
+                return "Done"
+        
