@@ -485,4 +485,20 @@ async def open(app_title: str) -> str:
         webbrowser.open(url)
         return "Done"
 
-    
+    # Strict return response structure for livekit tools pipeline handler
+    logger.warning(f"⚠️ Application '{app_title}' local hardware me nahi mili.")
+    return "Not Installed"
+
+@function_tool
+async def open_online_fallback(app_title: str) -> str:
+    """
+    User consent confirmation milne par direct network web lookup context execute karega.
+    """
+    app_query = app_title.lower().strip()
+    url = f"https://www.google.com/search?q={app_query}"
+    try:
+        webbrowser.open(url)
+        return "Done"
+    except Exception:
+        return "Failed"
+
