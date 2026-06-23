@@ -468,4 +468,21 @@ async def open(app_title: str) -> str:
             process.communicate()
             if process.returncode == 0:
                 return "Done"
-        
+        except Exception:
+            pass
+            
+        try:
+            process = subprocess.Popen(f'start "" "{app_query}.exe"', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process.communicate()
+            if process.returncode == 0:
+                return "Done"
+        except Exception:
+            pass
+
+    # 4️⃣ Browser Extension Target Fallback Execution
+    if "." in app_query or "http" in app_query:
+        url = app_query if app_query.startswith("http") else "https://" + app_query
+        webbrowser.open(url)
+        return "Done"
+
+    
