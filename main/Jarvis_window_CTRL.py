@@ -594,4 +594,12 @@ async def folder_file(command: str) -> str:
             logger.error(f"❌ Error launching path: {e}")
             return "Failed"
 
-    
+    # Ultimate Emergency Fallback (Desktop routing check)
+    if os.name == 'nt':
+        try:
+            os.system(f'start "" "C:\\Users\\Anmol kumar\\OneDrive\\Desktop\\{clean_command}"')
+            return "Done"
+        except Exception:
+            pass
+
+    return "Not Found"
