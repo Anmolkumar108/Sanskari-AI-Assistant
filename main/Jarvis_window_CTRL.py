@@ -502,3 +502,21 @@ async def open_online_fallback(app_title: str) -> str:
     except Exception:
         return "Failed"
 
+# -------------------------------------------------------
+# CLOSE APP SYSTEM (Integrated logic)
+# -------------------------------------------------------
+@function_tool
+async def close(window_title: str) -> str:
+    app_query = window_title.lower().strip()
+    
+    # Target via taskkill directly if mapped setup matches executable key
+    if app_query in APP_MAPPINGS:
+        exe_file = APP_MAPPINGS[app_query]
+        if ".exe" in exe_file:
+            os.system(f'taskkill /f /im {os.path.basename(exe_file)}')
+            return "Done"
+
+    if not win32gui:
+        return "Failed"
+
+    
