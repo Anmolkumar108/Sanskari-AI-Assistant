@@ -548,4 +548,20 @@ async def folder_file(command: str) -> str:
         except Exception:
             return "Failed"
 
+    # 2️⃣ RENAME OPERATION
+    if "rename" in command_lower:
+        parts = command_lower.replace("rename", "").split("to")
+        if len(parts) == 2:
+            old = parts[0].strip()
+            new = parts[1].strip()
+            
+            old_path = windows_global_search(old)
+            if old_path:
+                new_path = os.path.join(os.path.dirname(old_path), new)
+                try:
+                    os.rename(old_path, new_path)
+                    return "Done"
+                except Exception:
+                    return "Failed"
+
     
