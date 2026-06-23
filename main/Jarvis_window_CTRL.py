@@ -535,4 +535,17 @@ async def folder_file(command: str) -> str:
     """
     Handles file operations including create, open, delete and dynamic search updates.
     """
+    command_lower = command.lower()
+    logger.info(f"🎙️ Global File System Command Triggered: '{command}'")
+
+    # 1️⃣ CREATE FOLDER ACTION
+    if "create folder" in command_lower:
+        name = command.replace("create folder", "").replace("Create Folder", "").strip()
+        target_path = os.path.join(r"C:\Users\Anmol kumar\OneDrive\Desktop", name)
+        try:
+            os.makedirs(target_path, exist_ok=True)
+            return "Done"
+        except Exception:
+            return "Failed"
+
     
