@@ -287,3 +287,30 @@ MAIN_USER_DIRS = [
     r"C:\Users\Anmol kumar" 
 ]
 
+# 🎯 APP MAPPINGS & ALIASES (Dono codes ke keys ka dynamic fusion)
+APP_MAPPINGS = {
+    "notepad": "notepad.exe",
+    "calculator": "calc.exe",
+    "calc": "calc.exe",
+    "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "google chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "vlc": "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe",
+    "command prompt": "cmd.exe",
+    "cmd": "cmd.exe",
+    "terminal": "cmd.exe",
+    "paint": "mspaint.exe",
+    "control panel": "control.exe",
+    "whatsapp": "Whatsapp.exe",
+    "file explorer": "explorer.exe",
+    "this pc": "explorer.exe",
+    "my computer": "explorer.exe",
+    "task manager": "taskmgr.exe",
+    "vs code": "code",
+    "vscode": "code"
+}
+
+def clean_string(s: str) -> str:
+    """Spelling matching ke liye spaces aur symbols saaf karta hai"""
+    return "".join(c for c in s.lower() if c.isalnum())
+
