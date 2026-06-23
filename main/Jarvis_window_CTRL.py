@@ -270,3 +270,20 @@ try:
 except ImportError:
     gw = None
 
+# Setup
+sys.stdout.reconfigure(encoding='utf-8')
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# 📂 Windows ke core profiles mapping list (From Code 1)
+MAIN_USER_DIRS = [
+    r"C:\Users\Anmol kumar\OneDrive\Desktop",
+    r"C:\Users\Anmol kumar\Desktop",
+    r"C:\Users\Anmol kumar\OneDrive\Documents",
+    r"C:\Users\Anmol kumar\Documents",
+    r"C:\Users\Anmol kumar\Downloads",
+    r"C:\Users\Anmol kumar\Videos",
+    r"C:\Users\Anmol kumar\Music",
+    r"C:\Users\Anmol kumar" 
+]
+
