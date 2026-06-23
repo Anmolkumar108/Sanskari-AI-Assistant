@@ -564,4 +564,18 @@ async def folder_file(command: str) -> str:
                 except Exception:
                     return "Failed"
 
+    # 3️⃣ DELETE RUNNER
+    if "delete" in command_lower:
+        clean_name = command_lower.replace("delete", "").strip()
+        path_to_delete = windows_global_search(clean_name)
+        if path_to_delete:
+            try:
+                if os.path.isdir(path_to_delete):
+                    os.rmdir(path_to_delete)
+                else:
+                    os.remove(path_to_delete)
+                return "Done"
+            except Exception:
+                return "Failed"
+
     
