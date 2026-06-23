@@ -519,4 +519,20 @@ async def close(window_title: str) -> str:
     if not win32gui:
         return "Failed"
 
+    def handler(hwnd, _):
+        if win32gui.IsWindowVisible(hwnd):
+            if app_query in win32gui.GetWindowText(hwnd).lower():
+                win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
+
+    win32gui.EnumWindows(handler, None)
+    return "Done"
+
+# -------------------------------------------------------
+# 📂 REFINED FOLDER & FILE CRUD ENGINE (From Code 1 + Code 2 Operations)
+# -------------------------------------------------------
+@function_tool
+async def folder_file(command: str) -> str:
+    """
+    Handles file operations including create, open, delete and dynamic search updates.
+    """
     
