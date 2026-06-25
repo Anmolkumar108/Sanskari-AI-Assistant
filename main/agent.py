@@ -163,3 +163,175 @@ if __name__ == "__main__":
             entrypoint_fnc=entrypoint
         )
     )
+
+
+
+
+
+
+# import os
+# import logging
+# from dotenv import load_dotenv
+
+# from livekit import agents
+# from vision_tool import analyze_screen
+# from livekit.agents import (
+#     AgentSession,
+#     Agent,
+#     RoomInputOptions,
+# )
+
+# # LiveKit real-time Gemini module support
+# from livekit.plugins import google
+
+# # Some installations of `livekit` may not provide the `noise_cancellation`
+# # plugin. Import it defensively and provide a simple fallback so the
+# # rest of the script can run without raising ImportError.
+# try:
+#     from livekit.plugins import noise_cancellation
+# except Exception:
+#     class _NoiseCancellationStub:
+#         def BVC(self):
+#             # Return a harmless placeholder that `RoomInputOptions` can accept.
+#             return None
+
+#     noise_cancellation = _NoiseCancellationStub()
+
+# # =========================================
+# # LOCAL IMPORTS
+# # =========================================
+
+# # Cleaned up imports with exact name matching for DuckDuckGo tool
+# from Jarvis_google_search import (
+#     google_search,
+#     get_current_datetime,
+# )
+
+# from jarvis_get_whether import (
+#     get_weather,
+# )
+
+# from Jarvis_window_CTRL import (
+#     open,
+#     close,
+#     folder_file,
+# )
+
+# from Jarvis_file_opner import (
+#     Play_file,
+# )
+
+# from keyboard_mouse_CTRL import (
+#     move_cursor_tool,
+#     mouse_click_tool,
+#     scroll_cursor_tool,
+#     type_text_tool,
+#     press_key_tool,
+#     swipe_gesture_tool,
+#     press_hotkey_tool,
+#     control_volume_tool,
+# )
+
+# from Jarvis_prompts import (
+#     SANSKARI_PROMPT,
+# )
+
+# # =========================================
+# # LOAD ENV
+# # =========================================
+
+# load_dotenv()
+
+# # =========================================
+# # ASSISTANT CLASS
+# # =========================================
+
+# class Assistant(Agent):
+
+#     def __init__(self):
+
+#         super().__init__(
+
+#             instructions=SANSKARI_PROMPT,
+
+#             tools=[
+#                 # 🔍 Search & Environment Tools
+#                 google_search,
+#                 get_current_datetime,
+#                 get_weather,      # Now supports auto live location check!
+
+#                 # 🪟 Window / App Control
+#                 open,
+#                 close,
+
+#                 # 📂 File & Folder Control
+#                 folder_file,
+#                 Play_file,
+
+#                 # 👁️ Vision Capabilities
+#                 analyze_screen,
+
+#                 # 🖱️ Mouse Control Tools
+#                 move_cursor_tool,
+#                 mouse_click_tool,
+#                 scroll_cursor_tool,
+#                 swipe_gesture_tool,
+
+#                 # ⌨️ Keyboard Control Tools
+#                 type_text_tool,
+#                 press_key_tool,
+#                 press_hotkey_tool,
+
+#                 # ⚙️ System Controls
+#                 control_volume_tool,
+#             ],
+#         )
+
+# # =========================================
+# # MAIN ENTRYPOINT FUNCTION
+# # =========================================
+
+# async def entrypoint(ctx: agents.JobContext):
+
+#     print("💖 Sanskari AI Starting...")
+
+#     session = AgentSession(
+#         llm=google.beta.realtime.RealtimeModel(
+#             voice="Aoede",
+#             temperature=0.7,
+#         )
+#     )
+
+#     await ctx.connect()
+
+#     print("✅ Sanskari Connected Successfully!")
+
+#     await session.start(
+#         room=ctx.room,
+#         agent=Assistant(),
+#         room_input_options=RoomInputOptions(
+#             noise_cancellation=None,
+#             video_enabled=False,
+#         ),
+#     )
+
+#     # INSTANT FIRST WELCOME MESSAGE FOR ANMOL
+#     await session.generate_reply(
+#         instructions="Hello Anmol Sir ❤️"
+#     )
+
+# # =========================================
+# # RUN APPLICATION WORKER
+# # =========================================
+
+# if __name__ == "__main__":
+
+#     agents.cli.run_app(
+#         agents.WorkerOptions(
+#             entrypoint_fnc=entrypoint
+#         )
+#     )
+
+
+
+
