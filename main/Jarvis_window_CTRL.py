@@ -572,37 +572,6 @@
 #             try:
 #                 if os.path.isdir(path_to_delete):
 #                     os.rmdir(path_to_delete)
-#                 else:
-#                     os.remove(path_to_delete)
-#                 return "Done"
-#             except Exception:
-#                 return "Failed"
-
-#     # 4️⃣ OPEN FOLDER / FILE TARGET RUNNER
-#     clean_command = command.lower().replace("open", "").replace("folder", "").replace("file", "").strip()
-#     if not clean_command:
-#         return "Not Found"
-
-#     target_path = windows_global_search(clean_command)
-
-#     if target_path and os.path.exists(target_path):
-#         try:
-#             logger.info(f"🎯 Execution Path Found: {target_path}")
-#             os.startfile(target_path)
-#             return "Done"
-#         except Exception as e:
-#             logger.error(f"❌ Error launching path: {e}")
-#             return "Failed"
-
-#     # Ultimate Emergency Fallback (Desktop routing check)
-#     if os.name == 'nt':
-#         try:
-#             os.system(f'start "" "C:\\Users\\Anmol kumar\\OneDrive\\Desktop\\{clean_command}"')
-#             return "Done"
-#         except Exception:
-#             pass
-
-#     return "Not Found"
 
 
 
