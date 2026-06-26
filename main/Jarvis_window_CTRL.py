@@ -120,31 +120,6 @@
 #     except Exception as e:
 #         return f"❌ Error: {e}"
 
-# async def create_folder(path):
-#     try:
-#         os.makedirs(path, exist_ok=True)
-#         return f"✅ Folder created: {path}"
-#     except Exception as e:
-#         return f"❌ Error: {e}"
-
-# async def rename_item(old_path, new_path):
-#     try:
-#         os.rename(old_path, new_path)
-#         return f"✅ Renamed to: {new_path}"
-#     except Exception as e:
-#         return f"❌ Error: {e}"
-
-# async def delete_item(path):
-#     try:
-#         if os.path.isdir(path):
-#             os.rmdir(path)
-#         else:
-#             os.remove(path)
-#         return f"🗑️ Deleted: {path}"
-#     except Exception as e:
-#         return f"❌ Error: {e}"
-
-
 
 
 
