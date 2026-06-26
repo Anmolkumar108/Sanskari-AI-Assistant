@@ -446,16 +446,6 @@
 #             except Exception:
 #                 pass
 
-#     # 2️⃣ Windows Registry Mapping Check (Chrome, WhatsApp, standard tools path tracking)
-#     try:
-#         registered_apps = get_registered_windows_apps()
-#         target_exe_path = None
-#         for app_name, path in registered_apps.items():
-#             if clean_query in clean_string(app_name) or clean_string(app_name) in clean_query:
-#                 target_exe_path = path
-#                 break
-                
-#      
 
 import os
 import subprocess
