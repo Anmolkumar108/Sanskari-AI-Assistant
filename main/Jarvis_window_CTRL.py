@@ -171,15 +171,6 @@
 #         except:
 #             pass
 
-#         # 4️⃣ Website open
-#         if "." in app_title:
-#             url = app_title if app_title.startswith("http") else "https://" + app_title
-#             webbrowser.open(url)
-#             return f"🌐 Website open: {url}"
-#         else:
-#             webbrowser.open(f"https://www.google.com/search?q={app_title}")
-#             return f"🌐 {app_title} Google me open kiya"
-
 
 
 
