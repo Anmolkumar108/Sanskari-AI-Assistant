@@ -100,25 +100,6 @@
 #     if not choices:
 #         return None
 
-#     best_match, score = process.extractOne(query, choices)
-
-#     if score > 70:
-#         for item in filtered:
-#             if item["name"] == best_match:
-#                 return item
-#     return None
-
-# async def open_folder(path):
-#     try:
-#         os.startfile(path)
-#     except Exception as e:
-#         return f"❌ Error: {e}"
-
-# async def play_file(path):
-#     try:
-#         os.startfile(path)
-#     except Exception as e:
-#         return f"❌ Error: {e}"
 
 
 
