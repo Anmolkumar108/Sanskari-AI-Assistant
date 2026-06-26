@@ -401,34 +401,6 @@
 
 #     return None
 
-# # -------------------------------------------------------
-# # ⚡ FOCUS WINDOW LOGIC (From Code 2 commented block)
-# # -------------------------------------------------------
-# async def focus_window(title_keyword: str) -> bool:
-#     if not gw:
-#         return False
-#     await asyncio.sleep(1)
-#     title_keyword = title_keyword.lower()
-#     for window in gw.getAllWindows():
-#         if title_keyword in window.title.lower():
-#             if window.isMinimized:
-#                 window.restore()
-#             window.activate()
-#             return True
-#     return False
-
-# # -------------------------------------------------------
-# # 🔥 FIXED INTEGRATED UNIVERSAL APP OPENER 
-# # -------------------------------------------------------
-# @function_tool
-# async def open(app_title: str) -> str:
-#     """
-#     Local Mappings, Windows Registry aur active shell variables se safe layout me apps open karta hai.
-#     """
-#     app_query = app_title.lower().strip()
-#     clean_query = clean_string(app_title)
-#     logger.info(f"🎙️ Full-Scale Opener sequence active for app: '{app_query}'")
-
 
 
 import os
