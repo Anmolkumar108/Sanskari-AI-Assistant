@@ -222,24 +222,6 @@
 #                 new_path = os.path.join(os.path.dirname(item["path"]), new)
 #                 return await rename_item(item["path"], new_path)
 
-#     if "delete" in command_lower:
-#         item = await search_item(command, index, "folder") or await search_item(command, index, "file")
-#         if item:
-#             return await delete_item(item["path"])
-
-#     if "open folder" in command_lower:
-#         item = await search_item(command, index, "folder")
-#         if item:
-#             await open_folder(item["path"])
-#             return f"📂 Folder opened: {item['name']}"
-
-#     item = await search_item(command, index, "file")
-#     if item:
-#         await play_file(item["path"])
-#         return f"📄 File opened: {item['name']}"
-
-#     return "⚠ Kuch match nahi hua"
-
 
 
 
