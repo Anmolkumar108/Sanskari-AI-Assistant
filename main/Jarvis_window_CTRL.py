@@ -371,36 +371,6 @@
 #             if not os.path.exists(base_dir):
 #                 continue
 #             try:
-#                 cmd = f'where /r "{base_dir}" *{target_name}*'
-#                 startupinfo = subprocess.STARTUPINFO()
-#                 startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-                
-#                 proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, startupinfo=startupinfo)
-#                 stdout, _ = proc.communicate()
-                
-#                 if stdout:
-#                     lines = stdout.strip().split('\n')
-#                     for line in lines:
-#                         line = line.strip()
-#                         if line and os.path.exists(line):
-#                             name = os.path.basename(line)
-#                             all_matches.append({"name": name, "path": line})
-#             except Exception as e:
-#                 logger.error(f"Windows fast scan search error: {e}")
-#                 continue
-
-#     # Step 3: Fuzzy Match Output Selection
-#     if all_matches:
-#         choices = [m["name"] for m in all_matches]
-#         closest = difflib.get_close_matches(target_name, choices, n=1, cutoff=0.1)
-#         if closest:
-#             for m in all_matches:
-#                 if m["name"] == closest[0]:
-#                     return m["path"]
-#             return all_matches[0]["path"]
-
-#     return None
-
 
 
 import os
