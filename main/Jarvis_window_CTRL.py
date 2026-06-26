@@ -346,31 +346,7 @@
 #     query_clean = clean_string(target_name)
 #     if not query_clean:
 #         return None
-        
-#     all_matches = []
-#     logger.info(f"🔍 Windows Engine active: Dhoondh rahe hain '{target_name}'...")
 
-#     # Step 1: Fast Direct Match
-#     for base_dir in MAIN_USER_DIRS:
-#         if not os.path.exists(base_dir):
-#             continue
-#         try:
-#             for item in os.listdir(base_dir):
-#                 item_path = os.path.join(base_dir, item)
-#                 item_clean = clean_string(item)
-                
-#                 if query_clean in item_clean or item_clean in query_clean:
-#                     all_matches.append({"name": item, "path": item_path})
-#         except Exception:
-#             continue
-
-#     # Step 2: Deep Search Target utilizing command tool (where /r)
-#     if not all_matches:
-#         target_search_areas = MAIN_USER_DIRS[:4]
-#         for base_dir in target_search_areas:
-#             if not os.path.exists(base_dir):
-#                 continue
-#             try:
 
 
 import os
