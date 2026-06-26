@@ -429,22 +429,6 @@
 #     clean_query = clean_string(app_title)
 #     logger.info(f"🎙️ Full-Scale Opener sequence active for app: '{app_query}'")
 
-#     # 1️⃣ Check App Mappings (From Code 2 dictionary check)
-#     if app_query in APP_MAPPINGS:
-#         try:
-#             os.startfile(APP_MAPPINGS[app_query])
-#             return "Done"
-#         except Exception:
-#             pass
-
-#     # Fuzzy dynamic verification inside our explicit APP_MAPPINGS keys
-#     for mapping_name, system_exe in APP_MAPPINGS.items():
-#         if clean_query in clean_string(mapping_name) or clean_string(mapping_name) in clean_query:
-#             try:
-#                 os.startfile(system_exe)
-#                 return "Done"
-#             except Exception:
-#                 pass
 
 
 import os
