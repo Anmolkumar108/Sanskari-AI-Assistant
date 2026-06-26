@@ -157,19 +157,6 @@
 #             os.startfile(APP_MAPPINGS[app_title])
 #             return f"🚀 {app_title} open ho gaya (mapped)"
 
-#         # 2️⃣ Direct open
-#         try:
-#             os.startfile(app_title)
-#             return f"🚀 {app_title} open ho gaya"
-#         except:
-#             pass
-
-#         # 3️⃣ Try .exe
-#         try:
-#             os.startfile(app_title + ".exe")
-#             return f"🚀 {app_title}.exe open ho gaya"
-#         except:
-#             pass
 
 
 
