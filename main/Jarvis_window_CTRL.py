@@ -318,34 +318,7 @@
 #     """Windows Registry se system level applications ke real paths nikalta hai"""
 #     apps = {}
 #     paths_to_check = [
-#         r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths",
-#         r"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths"
-#     ]
-#     for path in paths_to_check:
-#         try:
-#             key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path)
-#             for i in range(winreg.QueryInfoKey(key)[0]):
-#                 try:
-#                     sub_key_name = winreg.EnumKey(key, i)
-#                     sub_key = winreg.OpenKey(key, f"{path}\\{sub_key_name}")
-#                     app_path, _ = winreg.QueryValue(sub_key, None)
-#                     if app_path:
-#                         name_clean = sub_key_name.lower().replace(".exe", "")
-#                         apps[name_clean] = app_path.strip('"')
-#                 except Exception:
-#                     continue
-#         except Exception:
-#             continue
-#     return apps
 
-# # -------------------------------------------------------
-# # 🔍 CORE WINDOWS SEARCH ENGINE (From Code 1 + Case Handling)
-# # -------------------------------------------------------
-# def windows_global_search(target_name: str) -> str:
-#     """Windows command use karke bina shortcuts ke instantly folder/file dhoondhta hai"""
-#     query_clean = clean_string(target_name)
-#     if not query_clean:
-#         return None
 
 
 
