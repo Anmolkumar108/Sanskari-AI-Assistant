@@ -199,28 +199,6 @@
 #     win32gui.EnumWindows(handler, None)
 #     return f"❌ Closed: {window_title}"
 
-# # -------------------------
-# # COMMAND HANDLER
-# # -------------------------
-# @function_tool
-# async def folder_file(command: str) -> str:
-#     index = await index_items(["D:/"])
-#     command_lower = command.lower()
-
-#     if "create folder" in command_lower:
-#         name = command.replace("create folder", "").strip()
-#         return await create_folder(os.path.join("D:/", name))
-
-#     if "rename" in command_lower:
-#         parts = command_lower.replace("rename", "").split("to")
-#         if len(parts) == 2:
-#             old = parts[0].strip()
-#             new = parts[1].strip()
-
-#             item = await search_item(old, index, "folder")
-#             if item:
-#                 new_path = os.path.join(os.path.dirname(item["path"]), new)
-#                 return await rename_item(item["path"], new_path)
 
 
 
