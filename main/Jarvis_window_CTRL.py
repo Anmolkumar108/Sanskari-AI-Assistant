@@ -144,18 +144,6 @@
 #     except Exception as e:
 #         return f"❌ Error: {e}"
 
-# # -------------------------
-# # 🔥 SMART APP OPEN
-# # -------------------------
-# @function_tool
-# async def open(app_title: str) -> str:
-#     app_title = app_title.lower().strip()
-
-#     try:
-#         # 1️⃣ Mapping
-#         if app_title in APP_MAPPINGS:
-#             os.startfile(APP_MAPPINGS[app_title])
-#             return f"🚀 {app_title} open ho gaya (mapped)"
 
 
 
