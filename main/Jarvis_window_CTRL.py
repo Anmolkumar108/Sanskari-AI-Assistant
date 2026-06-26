@@ -310,15 +310,6 @@
 #     "vscode": "code"
 # }
 
-# def clean_string(s: str) -> str:
-#     """Spelling matching ke liye spaces aur symbols saaf karta hai"""
-#     return "".join(c for c in s.lower() if c.isalnum())
-
-# def get_registered_windows_apps():
-#     """Windows Registry se system level applications ke real paths nikalta hai"""
-#     apps = {}
-#     paths_to_check = [
-
 
 
 
