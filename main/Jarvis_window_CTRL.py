@@ -180,26 +180,6 @@
 #             webbrowser.open(f"https://www.google.com/search?q={app_title}")
 #             return f"🌐 {app_title} Google me open kiya"
 
-#     except Exception as e:
-#         return f"❌ Error: {e}"
-
-# # -------------------------
-# # CLOSE APP
-# # -------------------------
-# @function_tool
-# async def close(window_title: str) -> str:
-#     if not win32gui:
-#         return "❌ win32gui not available"
-
-#     def handler(hwnd, _):
-#         if win32gui.IsWindowVisible(hwnd):
-#             if window_title.lower() in win32gui.GetWindowText(hwnd).lower():
-#                 win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
-
-#     win32gui.EnumWindows(handler, None)
-#     return f"❌ Closed: {window_title}"
-
-
 
 
 
