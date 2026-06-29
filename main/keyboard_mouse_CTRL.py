@@ -21,20 +21,6 @@
 #             "enter": Key.enter, "space": Key.space, "tab": Key.tab,
 #             "shift": Key.shift, "ctrl": Key.ctrl, "alt": Key.alt,
 #             "esc": Key.esc, "backspace": Key.backspace, "delete": Key.delete,
-#             "up": Key.up, "down": Key.down, "left": Key.left, "right": Key.right,
-#             "caps_lock": Key.caps_lock, "cmd": Key.cmd, "win": Key.cmd,
-#             "home": Key.home, "end": Key.end,
-#             "page_up": Key.page_up, "page_down": Key.page_down
-#         }
-
-#     def resolve_key(self, key):
-#         return self.special_keys.get(key.lower(), key)
-
-#     def log(self, action: str):
-#         with open("control_log.txt", "a") as f:
-#             f.write(f"{datetime.now()}: {action}\n")
-
-#     def activate(self, token=None):
 
 
 
