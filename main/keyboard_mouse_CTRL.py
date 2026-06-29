@@ -184,14 +184,6 @@
 # async def press_hotkey_tool(keys: List[str]):
 #     return await with_temporary_activation(controller.press_hotkey, keys)
 
-# @function_tool
-# async def control_volume_tool(action: str):
-#     return await with_temporary_activation(controller.control_volume, action)
-
-# @function_tool
-# async def swipe_gesture_tool(direction: str):
-#     return await with_temporary_activation(controller.swipe_gesture, direction)
-
 
 
 
