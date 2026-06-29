@@ -131,21 +131,6 @@
 #         self.log(f"Volume control: {action}")
 #         return f"🔊 Volume {action}."
 
-#     async def swipe_gesture(self, direction: str):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         screen_width, screen_height = pyautogui.size()
-#         x, y = screen_width // 2, screen_height // 2
-#         try:
-#             if direction == "up": pyautogui.moveTo(x, y + 200); pyautogui.dragTo(x, y - 200, duration=0.5)
-#             elif direction == "down": pyautogui.moveTo(x, y - 200); pyautogui.dragTo(x, y + 200, duration=0.5)
-#             elif direction == "left": pyautogui.moveTo(x + 200, y); pyautogui.dragTo(x - 200, y, duration=0.5)
-#             elif direction == "right": pyautogui.moveTo(x - 200, y); pyautogui.dragTo(x + 200, y, duration=0.5)
-#         except Exception:
-#             pass
-#         await asyncio.sleep(0.5)
-#         self.log(f"Swipe gesture: {direction}")
-#         return f"🖱️ Swipe {direction} done."
-
 
 
 
