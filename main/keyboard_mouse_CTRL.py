@@ -1,6 +1,4 @@
-# import pyautogui
-# import asyncio
-# import time
+
 
 import pyautogui
 import asyncio
