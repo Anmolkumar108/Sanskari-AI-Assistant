@@ -1,11 +1,6 @@
 # import pyautogui
 # import asyncio
 # import time
-# from datetime import datetime
-# from pynput.keyboard import Key, Controller as KeyboardController
-# from pynput.mouse import Button, Controller as MouseController
-
-
 
 import pyautogui
 import asyncio
