@@ -160,21 +160,6 @@
 #     controller.deactivate()
 #     return result
 
-# @function_tool
-# async def move_cursor_tool(direction: str, distance: int = 100):
-#     return await with_temporary_activation(controller.move_cursor, direction, distance)
-
-# @function_tool
-# async def mouse_click_tool(button: str = "left"):
-#     return await with_temporary_activation(controller.mouse_click, button)
-
-# @function_tool
-# async def scroll_cursor_tool(direction: str, amount: int = 10):
-#     return await with_temporary_activation(controller.scroll_cursor, direction, amount)
-
-# @function_tool
-# async def type_text_tool(text: str):
-#     return await with_temporary_activation(controller.type_text, text)
 
 
 
