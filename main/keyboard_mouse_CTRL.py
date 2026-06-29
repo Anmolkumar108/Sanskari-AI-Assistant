@@ -94,20 +94,6 @@
 #         self.log(f"Typed text: {text}")
 #         return f"⌨️ Typed: {text}"
 
-#     async def press_key(self, key: str):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         if key.lower() not in self.special_keys and key.lower() not in self.valid_keys:
-#             return f"❌ Invalid key: {key}"
-#         k = self.resolve_key(key)
-#         try:
-#             self.keyboard.press(k)
-#             self.keyboard.release(k)
-#         except Exception as e:
-#             return f"❌ Failed key: {key} — {e}"
-#         await asyncio.sleep(0.2)
-#         self.log(f"Pressed key: {key}")
-#         return f"⌨️ Key '{key}' pressed."
-
 
 
 
