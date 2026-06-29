@@ -69,31 +69,6 @@
 #         self.log(f"Mouse clicked: {button}")
 #         return f"🖱️ {button.capitalize()} click."
 
-#     async def scroll_cursor(self, direction: str, amount: int = 10):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         try:
-#             if direction == "up": self.mouse.scroll(0, amount)
-#             elif direction == "down": self.mouse.scroll(0, -amount)
-#         except:
-#             pyautogui.scroll(amount * 100)
-#         await asyncio.sleep(0.2)
-#         self.log(f"Mouse scrolled {direction}")
-#         return f"🖱️ Scrolled {direction}"
-
-#     async def type_text(self, text: str):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         for char in text:
-#             if not char.isprintable():
-#                 continue
-#             try:
-#                 self.keyboard.press(char)
-#                 self.keyboard.release(char)
-#                 await asyncio.sleep(0.05)
-#             except Exception:
-#                 continue
-#         self.log(f"Typed text: {text}")
-#         return f"⌨️ Typed: {text}"
-
 
 
 
