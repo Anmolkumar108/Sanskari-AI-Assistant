@@ -14,14 +14,7 @@
 #     def __init__(self):
 #         self.active = False
 #         self.activation_time = None
-#         self.keyboard = KeyboardController()
-#         self.mouse = MouseController()
-#         self.valid_keys = set("abcdefghijklmnopqrstuvwxyz1234567890")
-#         self.special_keys = {
-#             "enter": Key.enter, "space": Key.space, "tab": Key.tab,
-#             "shift": Key.shift, "ctrl": Key.ctrl, "alt": Key.alt,
-#             "esc": Key.esc, "backspace": Key.backspace, "delete": Key.delete,
-
+#         self.keybo
 
 
 
