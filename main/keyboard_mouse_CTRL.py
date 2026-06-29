@@ -49,17 +49,6 @@
 #     def is_active(self):
 #         return self.active
 
-#     async def move_cursor(self, direction: str, distance: int = 100):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         x, y = self.mouse.position
-#         if direction == "left": self.mouse.position = (x - distance, y)
-#         elif direction == "right": self.mouse.position = (x + distance, y)
-#         elif direction == "up": self.mouse.position = (x, y - distance)
-#         elif direction == "down": self.mouse.position = (x, y + distance)
-#         await asyncio.sleep(0.2)
-#         self.log(f"Mouse moved {direction}")
-#         return f"🖱️ Moved mouse {direction}."
-
 
 
 
