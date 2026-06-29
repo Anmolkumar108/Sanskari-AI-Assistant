@@ -108,29 +108,6 @@
 #         self.log(f"Pressed key: {key}")
 #         return f"⌨️ Key '{key}' pressed."
 
-#     async def press_hotkey(self, keys: List[str]):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         resolved = []
-#         for k in keys:
-#             if k.lower() not in self.special_keys and k.lower() not in self.valid_keys:
-#                 return f"❌ Invalid key in hotkey: {k}"
-#             resolved.append(self.resolve_key(k))
-
-#         for k in resolved: self.keyboard.press(k)
-#         for k in reversed(resolved): self.keyboard.release(k)
-#         await asyncio.sleep(0.3)
-#         self.log(f"Pressed hotkey: {' + '.join(keys)}")
-#         return f"⌨️ Hotkey {' + '.join(keys)} pressed."
-
-#     async def control_volume(self, action: str):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         if action == "up": pyautogui.press("volumeup")
-#         elif action == "down": pyautogui.press("volumedown")
-#         elif action == "mute": pyautogui.press("volumemute")
-#         await asyncio.sleep(0.2)
-#         self.log(f"Volume control: {action}")
-#         return f"🔊 Volume {action}."
-
 
 
 
