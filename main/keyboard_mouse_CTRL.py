@@ -60,15 +60,6 @@
 #         self.log(f"Mouse moved {direction}")
 #         return f"🖱️ Moved mouse {direction}."
 
-#     async def mouse_click(self, button: str = "left"):
-#         if not self.is_active(): return "🛑 Controller is inactive."
-#         if button == "left": self.mouse.click(Button.left, 1)
-#         elif button == "right": self.mouse.click(Button.right, 1)
-#         elif button == "double": self.mouse.click(Button.left, 2)
-#         await asyncio.sleep(0.2)
-#         self.log(f"Mouse clicked: {button}")
-#         return f"🖱️ {button.capitalize()} click."
-
 
 
 
