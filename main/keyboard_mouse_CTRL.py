@@ -176,15 +176,6 @@
 # async def type_text_tool(text: str):
 #     return await with_temporary_activation(controller.type_text, text)
 
-# @function_tool
-# async def press_key_tool(key: str):
-#     return await with_temporary_activation(controller.press_key, key)
-
-# @function_tool
-# async def press_hotkey_tool(keys: List[str]):
-#     return await with_temporary_activation(controller.press_hotkey, keys)
-
-
 
 
 
