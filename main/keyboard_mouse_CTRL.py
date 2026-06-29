@@ -146,20 +146,6 @@
 #         self.log(f"Swipe gesture: {direction}")
 #         return f"🖱️ Swipe {direction} done."
 
-# # ------------------------------
-# # LiveKit Tool Wrappers Section
-# # ------------------------------
-
-# controller = SafeController()
-
-# async def with_temporary_activation(fn, *args, **kwargs):
-#     print(f"🔍 TEMP ACTIVATION: {fn.__name__} | args: {args}")
-#     controller.activate("my_secret_token")
-#     result = await fn(*args, **kwargs)
-#     await asyncio.sleep(2)
-#     controller.deactivate()
-#     return result
-
 
 
 
