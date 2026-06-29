@@ -35,20 +35,6 @@
 #             f.write(f"{datetime.now()}: {action}\n")
 
 #     def activate(self, token=None):
-#         if token != "my_secret_token":
-#             self.log("Activation attempt failed.")
-#             return
-#         self.active = True
-#         self.activation_time = time.time()
-#         self.log("Controller auto-activated.")
-
-#     def deactivate(self):
-#         self.active = False
-#         self.log("Controller auto-deactivated.")
-
-#     def is_active(self):
-#         return self.active
-
 
 
 
