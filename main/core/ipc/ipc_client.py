@@ -27,4 +27,15 @@ class IPCClient:
             except ConnectionRefusedError:
                 time.sleep(0.5)
 
-    
+    def send(self, event, data):
+
+        try:
+
+            # print(f"SENDING -> {event} : {data}")
+
+            message = create_message(event, data) + "\n"
+            self.client.sendall(
+                message.encode()
+            )
+
+        
