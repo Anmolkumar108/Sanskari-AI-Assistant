@@ -38,4 +38,6 @@ class IPCClient:
                 message.encode()
             )
 
-        
+        except Exception as e:
+
+            print("IPC CLIENT ERROR:", e)
