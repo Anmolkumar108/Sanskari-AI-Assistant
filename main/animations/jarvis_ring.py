@@ -106,4 +106,24 @@ class JarvisRing(QWidget):
             340
         )
 
-    
+    def get_ring_color(self):
+        if self.state == "LISTENING":
+            return "#00FF99"
+        elif self.state == "THINKING":
+            return "#FFD700"
+        elif self.state == "SPEAKING":
+            return "#FF4DFF"
+        elif self.state == "ERROR":
+            return "#FF4444"
+        return "#00E5FF"
+
+    def draw_outer_ring(self, painter):
+        cx = self.width() / 2
+        cy = self.height() / 2
+        ring_color = self.get_ring_color()
+
+        pen = QPen(QColor(ring_color))
+        pen.setWidth(4)
+        painter.setPen(pen)
+
+        
