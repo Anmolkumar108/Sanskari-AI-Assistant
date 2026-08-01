@@ -84,4 +84,26 @@ class JarvisRing(QWidget):
 
         self.update()
 
+    def draw_glow(self, painter, cx, cy, ring_color):
+
+        gradient = QRadialGradient(cx, cy, 170)
+
+        color = QColor(ring_color)
+        color.setAlpha(70)
+        gradient.setColorAt(0.0, color)
+
+        transparent = QColor(ring_color)
+        transparent.setAlpha(0)
+        gradient.setColorAt(1.0, transparent)
+
+        painter.setPen(Qt.PenStyle.NoPen)
+        painter.setBrush(QBrush(gradient))
+
+        painter.drawEllipse(
+            int(cx - 170),
+            int(cy - 170),
+            340,
+            340
+        )
+
     
