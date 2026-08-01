@@ -266,4 +266,19 @@ class JarvisRing(QWidget):
     def draw_particles(self, painter):
         pass
 
-    
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+
+        cx = self.width() / 2
+        cy = self.height() / 2
+        ring_color = self.get_ring_color()
+
+        self.draw_glow(painter, cx, cy, ring_color)
+        self.draw_ticks(painter, cx, cy, ring_color)
+        self.draw_outer_ring(painter)
+        self.draw_radar(painter, cx, cy, ring_color)
+        self.draw_inner_ring(painter)
+        self.draw_orbits(painter)
+        self.draw_core(painter)
+        self.draw_particles(painter)
