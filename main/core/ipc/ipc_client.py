@@ -11,4 +11,13 @@ class IPCClient:
 
     def __init__(self):
 
-        
+        self.client = socket.socket(
+            socket.AF_INET,
+            socket.SOCK_STREAM
+        )
+
+        connected = False
+
+        while not connected:
+
+            
