@@ -192,4 +192,55 @@ class JarvisRing(QWidget):
         cy = self.height() / 2
         ring_color = self.get_ring_color()
 
-        
+        # Outer Rotating Dot
+        r = 140
+        x = cx + math.cos(math.radians(self.outer_angle)) * r
+        y = cy + math.sin(math.radians(self.outer_angle)) * r
+
+        painter.setBrush(QColor(ring_color))
+        painter.setPen(Qt.PenStyle.NoPen)
+
+        painter.drawEllipse(
+            int(x - 7),
+            int(y - 7),
+            14,
+            14
+        )
+
+        # Inner Rotating Dot
+        r = 90
+        x = cx + math.cos(math.radians(self.inner_angle)) * r
+        y = cy + math.sin(math.radians(self.inner_angle)) * r
+
+        painter.drawEllipse(
+            int(x - 5),
+            int(y - 5),
+            10,
+            10
+        )
+
+    def draw_ticks(self, painter, cx, cy, ring_color):
+        pen = QPen(QColor(ring_color))
+        pen.setWidth(2)
+
+        painter.setPen(pen)
+
+        radius = 155
+
+        for angle in range(0, 360, 6):
+            rad = math.radians(angle)
+
+            x1 = cx + math.cos(rad) * radius
+            y1 = cy + math.sin(rad) * radius
+
+            x2 = cx + math.cos(rad) * (radius + 8)
+            y2 = cy + math.sin(rad) * (radius + 8)
+
+            painter.drawLine(
+                int(x1),
+                int(y1),
+                int(x2),
+                int(y2)
+            )
+
+    
