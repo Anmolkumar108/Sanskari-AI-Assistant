@@ -62,4 +62,26 @@ class JarvisRing(QWidget):
             inner_speed = 0
             radar_speed = 0
 
-        
+        else:
+            outer_speed = 2
+            inner_speed = -3
+            radar_speed = 1
+
+        self.outer_angle += outer_speed
+        self.inner_angle += inner_speed
+        self.radar_angle += radar_speed
+
+        self.outer_angle %= 360
+        self.inner_angle %= 360
+        self.radar_angle %= 360
+
+        # Pulse Animation Logic
+        self.pulse += self.pulse_direction
+        if self.pulse >= 8:
+            self.pulse_direction = -1
+        elif self.pulse <= 0:
+            self.pulse_direction = 1
+
+        self.update()
+
+    
