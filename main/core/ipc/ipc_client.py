@@ -20,4 +20,11 @@ class IPCClient:
 
         while not connected:
 
-            
+            try:
+                self.client.connect((HOST, PORT))
+                connected = True
+
+            except ConnectionRefusedError:
+                time.sleep(0.5)
+
+    
