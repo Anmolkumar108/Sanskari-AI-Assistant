@@ -171,4 +171,25 @@ class JarvisRing(QWidget):
         pen.setWidth(2)
         painter.setPen(pen)
 
+        # Horizontal Line
+        painter.drawLine(
+            int(cx - 25),
+            int(cy),
+            int(cx + 25),
+            int(cy)
+        )
+
+        # Vertical Line
+        painter.drawLine(
+            int(cx),
+            int(cy - 25),
+            int(cx),
+            int(cy + 25)
+        )
+
+    def draw_orbits(self, painter):
+        cx = self.width() / 2
+        cy = self.height() / 2
+        ring_color = self.get_ring_color()
+
         
