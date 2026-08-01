@@ -149,4 +149,26 @@ class JarvisRing(QWidget):
             180
         )
 
-    
+    def draw_core(self, painter):
+        cx = self.width() / 2
+        cy = self.height() / 2
+        ring_color = self.get_ring_color()
+
+        # Center Core Ellipse (Pulsing)
+        painter.setBrush(QColor(ring_color))
+        painter.setPen(Qt.PenStyle.NoPen)
+
+        size = 56 + self.pulse
+        painter.drawEllipse(
+            int(cx - size / 2),
+            int(cy - size / 2),
+            int(size),
+            int(size)
+        )
+
+        # Crosshair Lines
+        pen = QPen(QColor(ring_color))
+        pen.setWidth(2)
+        painter.setPen(pen)
+
+        
