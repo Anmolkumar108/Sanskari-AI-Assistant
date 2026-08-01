@@ -243,4 +243,27 @@ class JarvisRing(QWidget):
                 int(y2)
             )
 
+    def draw_radar(self, painter, cx, cy, ring_color):
+        pen = QPen(QColor(ring_color))
+        pen.setWidth(6)
+
+        painter.setPen(pen)
+
+        rect_x = int(cx - 125)
+        rect_y = int(cy - 125)
+        rect_w = 250
+        rect_h = 250
+
+        painter.drawArc(
+            rect_x,
+            rect_y,
+            rect_w,
+            rect_h,
+            -self.radar_angle * 16,
+            -35 * 16
+        )
+
+    def draw_particles(self, painter):
+        pass
+
     
