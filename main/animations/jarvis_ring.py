@@ -126,4 +126,27 @@ class JarvisRing(QWidget):
         pen.setWidth(4)
         painter.setPen(pen)
 
-        
+        painter.drawEllipse(
+            int(cx - 140),
+            int(cy - 140),
+            280,
+            280
+        )
+
+    def draw_inner_ring(self, painter):
+        cx = self.width() / 2
+        cy = self.height() / 2
+        ring_color = self.get_ring_color()
+
+        pen = QPen(QColor(ring_color))
+        pen.setWidth(2)
+        painter.setPen(pen)
+
+        painter.drawEllipse(
+            int(cx - 90),
+            int(cy - 90),
+            180,
+            180
+        )
+
+    
