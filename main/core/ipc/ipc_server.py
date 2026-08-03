@@ -23,4 +23,18 @@ class IPCServer:
 
         self.server.listen(1)
 
-    
+    def start(self):
+
+        threading.Thread(
+            target=self.accept,
+            daemon=True
+        ).start()
+
+    def accept(self):
+
+        while True:
+
+            conn, addr = self.server.accept()
+            print("CLIENT CONNECTED:", addr)
+
+            
