@@ -69,4 +69,12 @@ class IPCServer:
 
                     msg = parse_message(raw_msg)
                     # print("📨 PARSED:", msg)
+                    # print("MESSAGE:", msg)
+
+                    event = msg["event"]
+                    value = msg["data"]
+
+                    # print("EVENT =", event)
+                    # print("VALUE =", value)
+
                     
