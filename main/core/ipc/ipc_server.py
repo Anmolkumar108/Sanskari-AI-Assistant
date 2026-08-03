@@ -112,4 +112,12 @@ class IPCServer:
                     elif event == "weather":
                         event_bus.weather_changed.emit(value)
 
-                    
+                    elif event == "mic":
+                        event_bus.mic_changed.emit(value)
+
+                    elif event == "agent":
+
+                        if str(value).lower() == "online":
+                            event_bus.agent_online.emit()
+
+                        
