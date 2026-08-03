@@ -77,4 +77,13 @@ class IPCServer:
                     # print("EVENT =", event)
                     # print("VALUE =", value)
 
+                    if event == "state":
+                        event_bus.state_changed.emit(value)
+
+                    elif event == "log":
+                        event_bus.log_message.emit(value)
+
+                    elif event == "chat":
+                        event_bus.chat_message.emit(value)
+
                     
