@@ -93,4 +93,14 @@ class IPCServer:
                         event_bus.assistant_message.emit(value)
                         event_bus.message_received.emit(value)
 
-                   
+                    elif event == "tool":
+                        event_bus.tool_changed.emit(value)
+
+                    elif event == "command":
+                        event_bus.last_command_changed.emit(value)
+
+                    elif event == "response":
+                        event_bus.response_changed.emit(value)
+                        event_bus.message_received.emit(value)
+
+                    
