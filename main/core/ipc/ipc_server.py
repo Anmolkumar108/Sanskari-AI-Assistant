@@ -37,4 +37,10 @@ class IPCServer:
             conn, addr = self.server.accept()
             print("CLIENT CONNECTED:", addr)
 
-            
+            threading.Thread(
+                target=self.handle,
+                args=(conn,),
+                daemon=True
+            ).start()
+
+    
