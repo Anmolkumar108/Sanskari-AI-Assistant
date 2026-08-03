@@ -103,4 +103,13 @@ class IPCServer:
                         event_bus.response_changed.emit(value)
                         event_bus.message_received.emit(value)
 
+                    elif event == "internet":
+                        event_bus.internet_changed.emit(value)
+
+                    # =========================
+                    # WEATHER EVENT HANDLING
+                    # =========================
+                    elif event == "weather":
+                        event_bus.weather_changed.emit(value)
+
                     
