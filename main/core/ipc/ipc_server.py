@@ -56,4 +56,17 @@ class IPCServer:
                 if not data:
                     break
 
-               
+                buffer += data.decode()
+
+                while "\n" in buffer:
+
+                    raw_msg, buffer = buffer.split("\n", 1)
+
+                    if not raw_msg.strip():
+                        continue
+
+                    # print("📨 RAW:", raw_msg)
+
+                    msg = parse_message(raw_msg)
+                    # print("📨 PARSED:", msg)
+                    
