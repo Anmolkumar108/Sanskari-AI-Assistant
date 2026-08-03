@@ -43,4 +43,17 @@ class IPCServer:
                 daemon=True
             ).start()
 
-    
+    def handle(self, conn):
+
+        buffer = ""
+
+        while True:
+
+            try:
+
+                data = conn.recv(4096)
+
+                if not data:
+                    break
+
+               
