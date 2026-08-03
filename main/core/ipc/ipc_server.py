@@ -86,4 +86,11 @@ class IPCServer:
                     elif event == "chat":
                         event_bus.chat_message.emit(value)
 
-                    
+                    elif event == "user_message":
+                        event_bus.user_message.emit(value)
+
+                    elif event == "assistant_message":
+                        event_bus.assistant_message.emit(value)
+                        event_bus.message_received.emit(value)
+
+                   
