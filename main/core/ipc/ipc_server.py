@@ -120,4 +120,14 @@ class IPCServer:
                         if str(value).lower() == "online":
                             event_bus.agent_online.emit()
 
-                        
+                        else:
+                            event_bus.agent_offline.emit()
+
+                    elif event == "connection":
+                        event_bus.connection_changed.emit(value)
+
+            except Exception as e:
+
+                print("SERVER ERROR:", e)
+                traceback.print_exc()
+                break
