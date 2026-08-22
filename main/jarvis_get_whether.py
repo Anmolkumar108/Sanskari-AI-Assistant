@@ -74,7 +74,7 @@ async def get_weather(city: str = "") -> str:
     try:
         response = requests.get(url, params=params)
         if response.status_code != 200:
-            logger.error(f"OpenWeather API mein error aaya: {response.status_code} - {response.text}")
+            logger.error(f"OpenWeather API mein error आया: {response.status_code} - {response.text}")
             return f"Error: {city} के लिए weather fetch नहीं कर पाए। कृपया city name चेक करें।"
 
         data = response.json()
@@ -90,11 +90,14 @@ async def get_weather(city: str = "") -> str:
                   f"- Wind Speed: {wind_speed} m/s")
 
         logger.info(f"Weather result: \n{result}")
+
+        print("=" * 60)
+        print("RETURNING WEATHER TO AGENT")
+        print(result)
+        print("=" * 60)
+
         return result
 
     except Exception as e:
         logger.exception(f"Weather fetch karte samay exception aya: {e}")
         return "Weather fetch karte samay ek error aaya"
-
-
-

@@ -1,7 +1,7 @@
+import asyncio
 from dotenv import load_dotenv
 
 from livekit import agents
-from vision_tool import analyze_screen
 from livekit.agents import (
     AgentSession,
     Agent,
@@ -9,6 +9,9 @@ from livekit.agents import (
 )
 
 from livekit.plugins import google
+
+# Step 68: Import IPCClient
+from main.core.ipc.ipc_client import IPCClient
 
 # Some installations of `livekit` may not provide the `noise_cancellation`
 # plugin. Import it defensively and provide a simple fallback so the
@@ -24,29 +27,31 @@ except Exception:
     noise_cancellation = _NoiseCancellationStub()
 
 # =========================================
-# LOCAL IMPORTS
+# LOCAL IMPORTS (Updated with main module prefix)
 # =========================================
 
-from Jarvis_google_search import (
+from main.vision_tool import analyze_screen
+
+from main.Jarvis_google_search import (
     google_search,
     get_current_datetime,
 )
 
-from jarvis_get_whether import (
+from main.jarvis_get_whether import (
     get_weather,
 )
 
-from Jarvis_window_CTRL import (
+from main.Jarvis_window_CTRL import (
     open,
     close,
     folder_file,
 )
 
-from Jarvis_file_opner import (
+from main.Jarvis_file_opner import (
     Play_file,
 )
 
-from keyboard_mouse_CTRL import (
+from main.keyboard_mouse_CTRL import (
     move_cursor_tool,
     mouse_click_tool,
     scroll_cursor_tool,
@@ -57,7 +62,7 @@ from keyboard_mouse_CTRL import (
     control_volume_tool,
 )
 
-from Jarvis_prompts import (
+from main.Jarvis_prompts import (
     SANSKARI_PROMPT,
 )
 
@@ -73,43 +78,45 @@ load_dotenv()
 
 class Assistant(Agent):
 
-    def __init__(self):
+    def __init__(self, ipc_client: IPCClient = None):
+
+        self.ipc_client = ipc_client
 
         super().__init__(
 
             instructions=SANSKARI_PROMPT,
 
             tools=[
-    # Search
-    google_search,
-    get_current_datetime,
-    get_weather,
+                # Search
+                google_search,
+                get_current_datetime,
+                get_weather,
 
-    # Window / App Control
-    open,
-    close,
+                # Window / App Control
+                open,
+                close,
 
-    # File & Folder Control
-    folder_file,
-    Play_file,
+                # File & Folder Control
+                folder_file,
+                Play_file,
 
-    # Vision
-    analyze_screen,
+                # Vision
+                analyze_screen,
 
-    # Mouse
-    move_cursor_tool,
-    mouse_click_tool,
-    scroll_cursor_tool,
-    swipe_gesture_tool,
+                # Mouse
+                move_cursor_tool,
+                mouse_click_tool,
+                scroll_cursor_tool,
+                swipe_gesture_tool,
 
-    # Keyboard
-    type_text_tool,
-    press_key_tool,
-    press_hotkey_tool,
+                # Keyboard
+                type_text_tool,
+                press_key_tool,
+                press_hotkey_tool,
 
-    # System
-    control_volume_tool,
-],
+                # System
+                control_volume_tool,
+            ],
         )
 
 # =========================================
@@ -132,24 +139,139 @@ async def entrypoint(ctx: agents.JobContext):
 
     print("✅ Sanskari Connected Successfully!")
 
-    await session.start(
+    # IPC Client Initialization & Status Broadcast
+    client = IPCClient()
+    client.send("log", "Agent Connected")
+    client.send("agent", "online")
+    client.send("connection", "Connected")
+    client.send("state", "IDLE")
+    client.send("internet", "Connected")
+    client.send("mic", "Idle")
+    client.send("tool", "None")
 
-        room=ctx.room,
+    try:
+        await session.start(
 
-        agent=Assistant(),
+            room=ctx.room,
 
-        room_input_options=RoomInputOptions(
+            agent=Assistant(ipc_client=client),
 
-            noise_cancellation=None,
+            room_input_options=RoomInputOptions(
 
-            video_enabled=False,
-        ),
-    )
+                noise_cancellation=None,
 
-    # INSTANT FIRST MESSAGE
-    await session.generate_reply(
-        instructions="Hello Anmol Sir ❤️"
-    )
+                video_enabled=False,
+            ),
+        )
+
+        # =========================================
+        # SESSION EVENTS & IPC INTEGRATION
+        # =========================================
+        @session.on("user_state_changed")
+        def on_user_state(ev):
+            print("🎤", ev)
+            client.send("log", f"USER : {ev.new_state}")
+            
+            # Listening / Speaking status update
+            if str(ev.new_state).lower() == "speaking":
+                client.send("mic", "Listening")
+            else:
+                client.send("mic", "Idle")
+
+        @session.on("agent_state_changed")
+        def on_agent_state(ev):
+            print("🤖", ev)
+            state_str = str(ev.new_state).upper()
+            client.send("state", state_str)
+
+            if "LISTENING" in state_str:
+                client.send("mic", "Listening")
+            elif "THINKING" in state_str or "SPEAKING" in state_str:
+                client.send("mic", "Speaking")
+            else:
+                client.send("mic", "Idle")
+
+        @session.on("user_input_transcribed")
+        def on_transcribed(ev):
+            # Clean transcript extraction
+            transcribed_text = getattr(ev, "transcript", "")
+
+            print("=" * 60)
+            print("TRANSCRIPT =", repr(transcribed_text))
+            print("=" * 60)
+
+            if transcribed_text:
+                client.send("chat", transcribed_text)
+                client.send("command", transcribed_text)
+
+            if hasattr(ev, "transcript") and ev.transcript:
+                client.send("user_message", ev.transcript)
+
+        @session.on("speech_created")
+        def on_speech(ev):
+            client.send("log", "Assistant Speaking...")
+            client.send("response", "Assistant Speaking...")
+
+        @session.on("metrics_collected")
+        def on_metrics(ev):
+            pass
+
+        # =========================================
+        # NEW FUNCTION TOOLS EXECUTED EVENT
+        # =========================================
+        @session.on("function_tools_executed")
+        def on_function_tools_executed(ev):
+
+            print("========== FUNCTION TOOLS EXECUTED ==========")
+
+            for call, output in ev.zipped():
+
+                print("TOOL:", call.name)
+                print("OUTPUT:", output)
+
+                client.send("tool", "None")
+
+                if call.name == "get_weather":
+
+                    if output is not None:
+
+                        weather = str(output.output)
+
+                        print("WEATHER =", weather)
+
+                        client.send("weather", weather)
+
+        @session.on("agent_response_created")
+        def on_response(ev):
+            print("========== AGENT RESPONSE ==========")
+            print(ev)
+            print(vars(ev) if hasattr(ev, "__dict__") else "No __dict__")
+            print("===================================")
+
+            if hasattr(ev, "text") and ev.text:
+                client.send("response", str(ev.text))
+                client.send("assistant_message", str(ev.text))
+
+        @session.on("error")
+        def on_error(ev):
+            print("❌ ERROR:", ev)
+            client.send("log", f"ERROR: {str(ev)}")
+
+        # INSTANT FIRST MESSAGE
+        initial_msg = "Hello Anmol Sir ❤️"
+        client.send("response", initial_msg)
+        client.send("assistant_message", initial_msg)
+        await session.generate_reply(
+            instructions=initial_msg
+        )
+
+        while True:
+            await asyncio.sleep(1)
+
+    finally:
+        # Agent disconnected / closed status update
+        client.send("agent", "offline")
+        client.send("connection", "Disconnected")
 
 # =========================================
 # RUN APP
@@ -163,8 +285,6 @@ if __name__ == "__main__":
             entrypoint_fnc=entrypoint
         )
     )
-
-
 
 
 
