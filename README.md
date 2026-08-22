@@ -627,11 +627,11 @@ GitHub
 
 LinkedIn
 
-> *(Add your LinkedIn URL here)*
+> https://www.linkedin.com/in/anmol-singh-361b90343/
 
 Email
 
-> *(Add your Email here)*
+> akanmolsingh8@gmail.com
 
 ---
 
